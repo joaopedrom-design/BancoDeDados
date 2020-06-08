@@ -6,6 +6,8 @@ CREATE TABLE livro (
 codLivro int PRIMARY KEY auto_increment,
 genero varchar(50),
 editora varchar(50),
+pages varchar(100),
+exemplares varchar(100),
 autor varchar(100),
 titulo varchar(100)
 );
@@ -18,7 +20,7 @@ rg varchar(20) unique,
 dataNascimento date,
 nome varchar(100),
 email varchar(100),
-logradouro varchar(100),
+rua varchar(100),
 num varchar(10),
 complemento varchar(100),
 bairro varchar(100),
@@ -48,7 +50,7 @@ FOREIGN KEY(ra) REFERENCES aluno (ra),
 FOREIGN KEY(codFuncionario) REFERENCES bibliotecario (codFuncionario)
 );
 
-INSERT into bibliotecario(nome,email,dataNascimento, cpf, rg, telefone, cidade, logradouro, rua, num, uf )VALUES
+INSERT into bibliotecario(nome,email,dataNascimento, cpf, rg, telefone, cidade, bairro, rua, num, uf )VALUES
 ('João','joao@gmail.com','1990-05-12','234.543.435-02','60.123.123-04','34234-3342','Ribeirão-
 
 Pires','Bairro Nobre','Rua Queiroz','8','SP'),
@@ -61,30 +63,30 @@ Pires','Bairro Nobre','Rua Queiroz','8','SP'),
 
 3642','Ribeirão-Pires','Jardim Flora','Rua Vingador','255','SP');
 
-INSERT into livro(titulo, autor, editora, genero)VALUES
-('Diario de um banana ','Jeff Kinney','V&R','comédia/ficção'),
-('Diario de um banana 2 ','Jeff Kinney','V&R','comédia/ficção'),
-('Diario de um banana 3','Jeff Kinney','V&R','comédia/ficção'),
-('Diario de um banana 4','Jeff Kinney','V&R','comédia/ficção'),
-('Diario de um banana 5','Jeff Kinney','V&R','comédia/ficção'),
-('A Culpa é das estrelas','John Green','E.P. Dutton','Romance'),
-('Cidades de Papel','John Green','E.P. Dutton','Romance'),
-('Percy jackson:O ladrão de Raios','Rick Riordan','Puffin Books','Ação/Ficção'),
-('Percy Jackson e o Mar de monstros','Rick Riordan','Miramax Books','Ação/Ficção'),
-('percy jackson A maldição do Titã','Rick Riordan','Miramax Books','Ação/Ficção');
+INSERT into livro(titulo, autor, editora, genero, pages, exemplares )VALUES
+('Diario de um banana ','Jeff Kinney','V&R','comédia/ficção','250','8'),
+('Diario de um banana 2 ','Jeff Kinney','V&R','comédia/ficção','278','5'),
+('Diario de um banana 3','Jeff Kinney','V&R','comédia/ficção','310','4'),
+('Diario de um banana 4','Jeff Kinney','V&R','comédia/ficção','280','6'),
+('Diario de um banana 5','Jeff Kinney','V&R','comédia/ficção','289','8'),
+('A Culpa é das estrelas','John Green','E.P. Dutton','Romance','220','6'),
+('Cidades de Papel','John Green','E.P. Dutton','Romance','297','5'),
+('Percy jackson:O ladrão de Raios','Rick Riordan','Puffin Books','Ação/Ficção','350','7'),
+('Percy Jackson e o Mar de monstros','Rick Riordan','Miramax Books','Ação/Ficção','375','3'),
+('percy jackson A maldição do Titã','Rick Riordan','Miramax Books','Ação/Ficção','330','5');
 
 
-INSERT into aluno(nome,dataNascimento,telefone, turma)VALUES
-('João Pedro','2003-10-21','97211-2055','2ºC'),
-('João Paulo','2001-11-11','97301-2775','3ºB'),
-('Pedro Henrique','2002-02-19','97441-2005','2ºC'),
-('Antonio','2002-05-11','97423-2665','2ºB'),
-('Matheus','2005-10-21','97332-2285','1ºC'),
-('Gustavo','2004-09-27','97641-7855','2ºC'),
-('Victor','2001-12-01','97231-2024','3ºB'),
-('Ana Vitoria','2001-06-11','96841-4532','3ºC'),
-('Luiza Sonsa','2002-03-23','98843-5443','2ºA'),
-('Whindersson Nunes','2002-07-03','95441-2421','3ºC');
+INSERT into aluno(nome,dataNascimento,telefone, email ,turma)VALUES
+('João Pedro','2003-10-21','97211-2055','joaopedro@email.com','2ºC'),
+('João Paulo','2001-11-11','97301-2775','joaopaulowski@email.com','3ºB'),  
+('Pedro Henrique','2002-02-19','97441-2005','pedrao@email.com','2ºC'),
+('Antonio','2002-05-11','97423-2665','antonio@email.com','2ºB'),
+('Matheus','2005-10-21','97332-2285','matheus@email.com','1ºC'),
+('Gustavo','2004-09-27','97641-7855','gustagool@email.com','2ºC'),
+('Victor','2001-12-01','97231-2024','victinho@email.com','3ºB'),
+('Ana Vitoria','2001-06-11','96841-4532','aninhav@email.com','3ºC'),
+('Luiza Sonsa','2002-03-23','98843-5443','luizaSonsa@email.com','2ºA'),
+('Whindersson Nunes','2002-07-03','95441-2421','whindboi59@email.com','3ºC');
 
 INSERT into emprestimo_devolucao(codFuncionario, codLivro, ra, data_emprestimo,
 data_devolucao)VALUES
@@ -98,3 +100,4 @@ data_devolucao)VALUES
 (3,8,4,'2019-05-15','2020-06-02'),
 (1,8,6,'2020-03-20','2020-04-20'),
 (2,10,7,'2019-05-22','2020-06-14');
+
